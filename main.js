@@ -1,8 +1,25 @@
 // ===== DARK MODE =====
+// const toggle = document.getElementById('theme-toggle');
+// toggle.addEventListener('click', () => {
+//     document.documentElement.classList.toggle('dark');
+//     toggle.textContent = document.documentElement.classList.contains('dark') ? '☀️' : '🌙';
+// });
+
+// ===== DARK MODE =====
 const toggle = document.getElementById('theme-toggle');
+
+// Vérifier la préférence stockée
+if (localStorage.getItem('theme') === 'dark') {
+    document.documentElement.classList.add('dark');
+    toggle.textContent = '☀️';
+} else {
+    toggle.textContent = '🌙';
+}
+
 toggle.addEventListener('click', () => {
-    document.documentElement.classList.toggle('dark');
-    toggle.textContent = document.documentElement.classList.contains('dark') ? '☀️' : '🌙';
+    const isDark = document.documentElement.classList.toggle('dark');
+    toggle.textContent = isDark ? '☀️' : '🌙';
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
 });
 
 // ===== FORMULAIRE =====
