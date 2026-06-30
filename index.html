@@ -281,12 +281,31 @@
                 <a href="#" class="inline-block mt-4 text-blue-600 dark:text-blue-400 font-medium hover:underline">Voir le projet →</a>
             </div>
 
-            <div class="w-full h-40 bg-gradient-to-br from-blue-400 to-purple-500 rounded-xl mb-4 flex items-center justify-center text-5xl text-white/50 relative overflow-hidden cursor-pointer" onclick="window.open('https://youtu.be/ta-video', '_blank')">
-            <img src="./assets/projets/guichet-portuaire.jpg" alt="Guichet Unique Portuaire" class="w-full h-full object-cover" />
-            <!-- Icône play -->
-            <div class="absolute inset-0 flex items-center justify-center bg-black/30 hover:bg-black/50 transition">
-                <i class="fas fa-play-circle text-6xl text-white"></i>
+             <!-- Projet 1 -->
+        <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow hover:shadow-xl transition group">
+            <div class="w-full h-40 bg-gradient-to-br from-blue-400 to-purple-500 rounded-xl mb-4 flex items-center justify-center text-5xl text-white/50 relative overflow-hidden cursor-pointer" onclick="ouvrirVideo('./assets/videos/guichet-portuaire.mp4')">
+                <img src="./assets/projets/guichet-portuaire.jpg" alt="Guichet Unique Portuaire" class="w-full h-full object-cover" />
+                <!-- Overlay play -->
+                <div class="absolute inset-0 flex items-center justify-center bg-black/30 hover:bg-black/50 transition">
+                    <i class="fas fa-play-circle text-6xl text-white drop-shadow-lg"></i>
+                </div>
+                <!-- Badge durée -->
+                <span class="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">02:15</span>
             </div>
+            <h4 class="text-xl font-bold">Guichet Unique Portuaire</h4>
+            <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Spring Boot • Angular • Keycloak</p>
+            <p class="text-sm text-gray-600 dark:text-gray-300 mt-3">Portail de gestion portuaire avec paiement sécurisé.</p>
+            
+            <div class="mt-4 flex flex-wrap gap-2">
+                <button onclick="ouvrirVideo('./assets/videos/projet.mp4')" class="px-4 py-2 bg-blue-600 text-white text-sm rounded-lg hover:bg-blue-700 transition flex items-center gap-2">
+                    <i class="fas fa-play"></i> Voir la démo
+                </button>
+                <button onclick="demanderAcces('Guichet Unique Portuaire')" class="px-4 py-2 border border-gray-300 dark:border-gray-600 text-sm rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition flex items-center gap-2">
+                    <i class="fas fa-lock"></i> Demander l'accès
+                </button>
+            </div>
+        </div>
+
 </div>
         </div>
     </section>
@@ -321,6 +340,22 @@
     <footer class="py-6 text-center text-sm text-gray-500 dark:text-gray-400 border-t border-gray-200 dark:border-gray-800">
         © 2026 Adama Diaw — Développeur Fullstack Java
     </footer>
+
+    <!-- ===== MODAL VIDEO ===== -->
+        <div id="video-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm hidden items-center justify-center z-50 p-4" onclick="fermerVideo()">
+            <div class="relative max-w-4xl w-full bg-black rounded-2xl overflow-hidden shadow-2xl" onclick="event.stopPropagation()">
+                <!-- Bouton fermer -->
+                <button onclick="fermerVideo()" class="absolute top-4 right-4 text-white/70 hover:text-white text-3xl z-10 transition">
+                    <i class="fas fa-times"></i>
+                </button>
+                
+                <!-- Lecteur vidéo -->
+                <video id="video-player" class="w-full h-auto max-h-[80vh]" controls autoplay>
+                    <source id="video-source" src="" type="video/mp4">
+                    Ton navigateur ne supporte pas la lecture vidéo.
+                </video>
+            </div>
+        </div>
 
     <script src="main.js"></script>
 </body>

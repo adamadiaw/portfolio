@@ -39,3 +39,49 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
         }
     });
 });
+
+// ===== LECTEUR VIDÉO =====
+function ouvrirVideo(url) {
+    const modal = document.getElementById('video-modal');
+    const video = document.getElementById('video-player');
+    const source = document.getElementById('video-source');
+    
+    // Charger la vidéo
+    source.src = url;
+    video.load();
+    
+    // Afficher la modal
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    
+    // Lecture automatique
+    video.play().catch(err => {
+        console.log('Lecture automatique bloquée par le navigateur');
+    });
+}
+
+function fermerVideo() {
+    const modal = document.getElementById('video-modal');
+    const video = document.getElementById('video-player');
+    
+    // Arrêter la vidéo
+    video.pause();
+    video.currentTime = 0;
+    
+    // Cacher la modal
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+}
+
+// Fermer avec la touche Echap
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        fermerVideo();
+    }
+});
+
+// ===== DEMANDER L'ACCÈS =====
+function demanderAcces(projet) {
+    const message = `Bonjour Adama, je suis intéressé par votre projet "${projet}" et j'aimerais avoir accès au code source ou en discuter avec vous. Pouvez-vous me contacter ?`;
+    window.location.href = `mailto:adamadiaw842@gmail.com?subject=Accès au code - ${projet}&body=${encodeURIComponent(message)}`;
+}
